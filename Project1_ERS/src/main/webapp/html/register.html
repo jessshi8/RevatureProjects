@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ERS Registration</title>
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+	crossorigin="anonymous">
+<link rel="stylesheet" type="text/css" href="../css/style.css">
+</head>
+<body class="register-page">
+	<div class="container" id="register-container">
+		<div class="row">
+			<div class="col-md-12">
+				<h2 id="register-title">Register Account</h2>
+				<br>
+				<form id="register" method="POST"
+					action="/Project1_ERS/register.change">
+					<label class="register-label"><b>First Name: </b></label> <label
+						id="asterisk">* </label> <input type="text" name="firstname"
+						id="firstname" pattern="[A-Z]{1}[a-z]*"
+						placeholder="Enter first name" required> <br>
+					<br> <label class="register-label"><b>Last Name: </b></label>
+					<label id="asterisk">* </label> <input type="text" name="lastname"
+						id="lastname" pattern="[A-Z]{1}[a-z]*"
+						placeholder="Enter last name" required> <br>
+					<br> <label class="register-label"><b>Email: </b></label> <label
+						id="asterisk">* </label> <input type="email" name="email"
+						id="email" placeholder="Enter email address" required> <br>
+					<br> <label class="register-label"><b>Username: </b></label> <label
+						id="asterisk">* </label> <input type="text" name="username"
+						id="username" pattern="[a-z][a-z0-9_.]{4,20}"
+						placeholder="Enter username" required>
+					<p id="pattern">
+						<small>Must be lowercase and can include numbers,
+							underscores, and periods (5-20 characters)</small>
+					</p>
+					<label class="register-label"><b>Password: </b></label> <label
+						id="asterisk">* </label> <input type="password" name="password"
+						id="password"
+						pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,20}$"
+						placeholder="Enter password" required>
+					<p id="pattern">
+						<small>Must include at least 1 lowercase, 1 uppercase, 1
+							number, and 1 special character (8-20 characters) </small>
+					</p>
+					<label id="asterisk">* </label> <label id="required-text"><small>Required</small></label>
+					<br>
+					<br> <input type="submit" name="registerbtn" id="registerbtn"
+						value=Register> <br>
+					<br> <span> <small>Already have an account? <a
+							id="login-hyperlink" href="index.html">Login here.</a></small>
+					</span>
+				</form>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

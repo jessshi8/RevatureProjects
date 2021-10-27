@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Employee Home Page</title>
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+	crossorigin="anonymous">
+<link
+	href='https://fonts.googleapis.com/css?family=Exo+2:300,400,600,900'
+	rel='stylesheet' type='text/css'>
+<style>
+html {
+	height: 100%;
+}
+
+.employee-home-page {
+	background-image: linear-gradient(to top right, #aeb5c5, #827b9a, #3e4057);
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-size: cover;
+	font-family: sans-serif;
+}
+
+#employee-home-container {
+	width: 1000px;
+	height: 800px;
+	margin: 80px auto;
+	background-color: rgba(240, 239, 238, 0.8);
+	border-radius: 50px;
+}
+
+.row, .col {
+	font-family: 'Exo 2';
+	color: black;
+}
+
+#welcome-heading {
+	padding: 40px 0px 20px;
+	margin: auto;
+	font: bold 45px Georgia, serif;
+	text-shadow: 4px 4px #aeb5c5;
+	text-align: center;
+	color: #3e4057;
+}
+
+#col1, #col2 {
+	height: 500px;
+	margin-top: 30px;
+	margin-bottom: 50px;
+	border: dotted 5px #827b9a;
+}
+
+#col1 {
+	margin-left: 50px;
+	margin-right: 25px;
+}
+
+#col2 {
+	margin-left: 25px;
+	margin-right: 50px;
+}
+
+#view, #view-tickets, #submit, #request-btn, #logout {
+	text-align: center;
+}
+
+#view, #submit {
+	margin: 25px;
+}
+
+#view-history, #new-request {
+	transition: all .5s ease;
+	color: #aeb5c5;
+	border: 3px solid #aeb5c5;
+	font: bold 28px Georgia, serif;
+	text-transform: uppercase;
+	text-align: center;
+	line-height: 1;
+	background-color: white;
+	padding: 20px;
+	outline: none;
+	border-radius: 12px;
+}
+
+#view-history:hover, #new-request:hover {
+	color: white;
+	border: 3px solid white;
+	background-color: #aeb5c5;
+	cursor: pointer;
+}
+
+#logout-row {
+	margin: 20px auto 30px;
+}
+
+#logout-btn {
+	transition: all .5s ease;
+	color: #d1544b;
+	border: 2px solid #d1544b;
+	text-align: center;
+	line-height: 1;
+	background-color: white;
+	padding: 10px;
+	outline: none;
+	border-radius: 10px;
+	font-size: 20px;
+}
+
+#logout-btn:hover {
+	color: white;
+	border: 3px solid white;
+	background-color: #d1544b;
+	cursor: pointer;
+}
+
+#modal-text {
+	text-align: center;
+}
+</style>
+</head>
+<body class="employee-home-page">
+	<div class="container" id="employee-home-container">
+		<div id="heading-row" class="row">
+			<h2 id="welcome-heading"></h2>
+		</div>
+		<div id="buttons-row" class="row">
+			<div id="col1" class="col md-6">
+				<h3 id="view">View Past Tickets</h3>
+				<p id="view-info">You can view all of your past submissions with details of the request,
+				including:
+				<ul>
+					<li>Request number</li>
+					<li>Request type</li>
+					<li>Description of the request</li>
+					<li>Amount requested</li>
+					<li>Date and time it was submitted and/or resolved</li>
+					<li>Name of the resolver</li>
+					<li>Status of the request</li>
+				</ul>
+				</p>
+				<br>
+				<!-- Button view past tickets -->
+				<form id="view-tickets" method="POST" action="/Project1_ERS/viewHistory.change">
+					<button type="submit" class="btn btn-primary" id="view-history" 
+						data-bs-toggle="modal" data-bs-target="#ticket-modal">Go</button>
+				</form>
+			</div>
+			<div id="col2" class="col md-6">
+				<h3 id="submit">Submit New Request</h3>
+				<p id="submit-info">You can submit a new expense reimbursement request here.
+				Please include the following information:
+				<ul>
+					<li>Amount of the reimbursement</li>
+					<li>Brief description of the request</li>
+					<li>Photo evidence (via a receipt)</li>
+					<li>Type of reimbursement</li>
+				</ul>
+				Your submission will not be received if the form is not filled out properly.</p>
+				<!-- Button add reimbursement request -->
+				<div id="request-btn">
+					<button id="new-request" type="button" class="btn btn-primary" data-bs-toggle="modal" 
+					data-bs-target="#reimbursement-modal">Go</button>
+				</div>
+			</div>
+		</div>
+		<div id="logout-row" class="row">
+			<!-- Button logout -->
+			<form id="logout" method="POST" action="/Project1_ERS/logout.change">
+				<button type="submit" id="logout-btn">Logout</button>
+			</form>
+		</div>
+	</div>
+	
+
+	<!-- Ticket modal -->
+	<div class="modal fade" id="ticket-modal" data-bs-backdrop="static"
+		data-bs-keyboard="false" tabindex="-1"
+		aria-labelledby="staticBackdropLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-body">
+					<h5 id="modal-text">Generating reimbursement history...</h5>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<!-- Reimbursement modal -->
+	<div class="modal fade" id="reimbursement-modal" data-bs-backdrop="static"
+		data-bs-keyboard="false" tabindex="-1"
+		aria-labelledby="staticBackdropLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 id="modal-text" class="modal-title" id="staticBackdropLabel">Reimbursement Form</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="modal"
+						aria-label="Close"></button>
+				</div>
+				<div class="modal-body">
+					<form id="request" method="POST" action="/Project1_ERS/request.change" enctype="multipart/form-data">
+						<label><b>Amount: </b></label>
+						<label>$</label>
+						<input type="text" name="amount" id="amount" placeholder="Enter amount" required> 
+						<br><br>
+						<label><b>Description (max 250 characters): </b></label> 
+						<br>
+						<textarea rows="4" cols="50" name="description" form="request" required></textarea> 
+						<br><br>
+						<label><b>Upload Receipt (.jpg only): </b></label>
+							<fieldset>
+							<input type="file" name="receipt" id="receipt">
+						</fieldset>
+						<br>
+						<label><b>Indicate type: </b></label>
+						<fieldset>
+							<input type="radio" name="request-type" value="travel"> Travel <br>
+							<input type="radio" name="request-type" value="mileage"> Mileage & Gas <br>
+							<input type="radio" name="request-type" value="lodging"> Lodging <br>
+							<input type="radio" name="request-type" value="meals"> Meals & Entertainment <br>
+							<input type="radio" name="request-type" value="medical"> Medical <br>
+							<input type="radio" name="request-type" value="other"> Other <br>
+						</fieldset>
+						<br>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancel</button>
+							<input type="submit" class="btn btn-outline-dark" name="requestbtn" id="requestbtn" value=Submit>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script type = "text/javascript">
+	   function preventBack(){window.history.forward();}
+	    setTimeout("preventBack()", 0);
+	    window.onunload=function(){null};
+	</script>
+	<script
+		src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+		integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+		integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
+		crossorigin="anonymous"></script>
+	<script type="text/javascript" src="js/home.js"></script>
+</body>
+</html>

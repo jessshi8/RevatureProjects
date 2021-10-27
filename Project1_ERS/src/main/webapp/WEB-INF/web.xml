@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://java.sun.com/xml/ns/javaee"
+	xsi:schemaLocation="http://Java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	version="2.5">
+	<display-name>Project1_ERS</display-name>
+	<welcome-file-list>
+		<welcome-file>index.html</welcome-file>
+	</welcome-file-list>
+	<!-- ViewServlet Configuration -->
+	<servlet>
+		<servlet-name>ViewServlet</servlet-name>
+		<servlet-class>com.ers.servlets.ViewServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ViewServlet</servlet-name>
+		<url-pattern>*.change</url-pattern>
+	</servlet-mapping>
+	<!-- JSONServlet Configuration -->
+	<servlet>
+		<servlet-name>JSONServlet</servlet-name>
+		<servlet-class>com.ers.servlets.JSONServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>JSONServlet</servlet-name>
+		<url-pattern>*.json</url-pattern>
+	</servlet-mapping>
+	
+</web-app>

@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Manager Home Page</title>
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+	crossorigin="anonymous">
+<link
+	href='https://fonts.googleapis.com/css?family=Exo+2:300,400,600,900'
+	rel='stylesheet' type='text/css'>
+<style>
+html {
+	height: 100%;
+}
+
+.manager-home-page {
+	background-image: linear-gradient(to top right, #aeb5c5, #827b9a, #3e4057);
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-size: cover;
+	font-family: sans-serif;
+}
+
+#manager-home-container {
+	width: 800px;
+	height: 800px;
+	margin: 80px auto;
+	background-color: rgba(240, 239, 238, 0.8);
+	border-radius: 50px;
+}
+
+.row, .col {
+	font-family: 'Exo 2';
+	color: black;
+}
+
+#welcome-heading {
+	padding: 40px 0px 20px;
+	margin: auto;
+	font: bold 45px Georgia, serif;
+	text-shadow: 4px 4px #aeb5c5;
+	text-align: center;
+	color: #3e4057;
+}
+
+#col {
+	height: 400px;
+	margin: 30px 200px;
+	border: dotted 5px #827b9a;
+}
+
+#view, #view-info, #button, #logout {
+	text-align: center;
+}
+
+#view {
+	margin: 25px;
+}
+
+#view-all {
+	transition: all .5s ease;
+	color: #aeb5c5;
+	border: 3px solid #aeb5c5;
+	font: bold 28px Georgia, serif;
+	text-transform: uppercase;
+	text-align: center;
+	line-height: 1;
+	background-color: white;
+	padding: 20px;
+	outline: none;
+	border-radius: 12px;
+}
+
+#view-all:hover {
+	color: white;
+	border: 3px solid white;
+	background-color: #aeb5c5;
+	cursor: pointer;
+}
+
+#logout-row {
+	margin: 150px auto 30px;
+}
+
+#logout-btn {
+	transition: all .5s ease;
+	color: #d1544b;
+	border: 2px solid #d1544b;
+	text-align: center;
+	line-height: 1;
+	background-color: white;
+	padding: 10px;
+	outline: none;
+	border-radius: 10px;
+	font-size: 20px;
+}
+
+#logout-btn:hover {
+	color: white;
+	border: 3px solid white;
+	background-color: #d1544b;
+	cursor: pointer;
+}
+
+#modal-text {
+	text-align: center;
+}
+</style>
+</head>
+<body class="manager-home-page">
+	<div class="container" id="manager-home-container">
+		<div id="heading-row" class="row">
+			<h2 id="welcome-heading"></h2>
+		</div>
+		<div id="button-row" class="row">
+			<div id="col" class="col md-12">
+				<h3 id="view">View Submitted Requests</h3>
+				<p id="view-info">You can view all submitted expense
+					reimbursement requests here. This is also where you can approve or
+					deny pending requests. Use the filter buttons to navigate more
+					easily to view pending, approved, and denied forms.</p>
+				<br>
+				<!-- Button view ticket history -->
+				<div id="button">
+					<form id="view-tickets" method="POST"
+						action="/Project1_ERS/viewTickets.change">
+						<button type="submit" class="btn btn-primary" id="view-all"
+							data-bs-toggle="modal" data-bs-target="#ticket-modal">Go</button>
+					</form>
+				</div>
+			</div>
+		</div>
+		<div id="logout-row" class="row">
+			<!-- Button logout -->
+			<form id="logout" method="POST" action="/Project1_ERS/logout.change">
+				<button type="submit" id="logout-btn">Logout</button>
+			</form>
+		</div>
+
+
+		<!-- Ticket modal -->
+		<div class="modal fade" id="ticket-modal" data-bs-backdrop="static"
+			data-bs-keyboard="false" tabindex="-1"
+			aria-labelledby="staticBackdropLabel" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-body">
+						<h5 id="modal-text">Generating reimbursement requests...</h5>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+	   function preventBack(){window.history.forward();}
+	    setTimeout("preventBack()", 0);
+	    window.onunload=function(){null};
+	</script>
+	<script
+		src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+		integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+		integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
+		crossorigin="anonymous"></script>
+	<script type="text/javascript" src="js/home.js"></script>
+</body>
+</html>
