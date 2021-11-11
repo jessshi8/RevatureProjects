@@ -1,0 +1,48 @@
+<div class="catalog-container">
+    <h2 id="title">Book Details</h2>
+    <hr class="solid">
+
+    <h4 id="title">{{book[0].title}}</h4>
+    <h5 id="price">{{book[0].price | currency}}</h5>
+    <img id="cover" src="{{book[0].book_cover}}" alt="Book Cover">
+    <br>
+    <div class="row">
+        <h6>Summary: </h6>
+        <p id="summary">{{book[0].summary}}</p>
+    </div>
+    <br>
+    <div class="row">
+        <h6>Written by: </h6>
+        <p>{{book[0].author}}</p>
+        <br>
+        <h6>Genre: </h6>
+        <p>{{book[0].genre}}</p>
+        <br>
+        <h6>Published by: </h6>
+        <p>{{book[0].publisher}}</p>
+        <br>
+        <h6>Publication date: </h6>
+        <p>{{book[0].published}}</p>
+    </div>
+
+    <div *ngIf="inCart; then cartBlock"></div>
+    <ng-template #cartBlock>
+        <p id="message" class="form-text text-danger">Error! This book already exists in your cart.</p>
+    </ng-template>
+
+    <div *ngIf="inBookmarks; then bmBlock"></div>
+    <ng-template #bmBlock>
+        <p id="message" class="form-text text-danger">Error! This book already exists in your bookmarks.</p>
+    </ng-template>
+    <hr class="solid">
+
+    <div *ngIf="inOrders; then orderBlock"></div>
+    <ng-template #orderBlock>
+        <p id="message" class="form-text text-danger">Error! You've already ordered this book.</p>
+    </ng-template>
+
+    <div class="row">
+        <button (click)="addToCart()"><i class="bi bi-cart4"></i> Add To Cart</button>
+        <button (click)="addToBookmarks()"><i class="bi bi-journal-bookmark-fill"></i> Add To Bookmarks</button>
+    </div>
+</div>

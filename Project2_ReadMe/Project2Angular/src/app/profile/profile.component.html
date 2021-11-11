@@ -1,0 +1,47 @@
+<div class="container">
+  <h2 id="title">User Profile</h2>
+  <hr class="solid">
+
+  <div *ngIf="sessionUser==null; then notLoggedInBlock else loggedInBlock"></div>
+  <!-- Not Logged In View -->
+  <ng-template #notLoggedInBlock>
+    <p id="body">Register or login to an existing account.</p>
+  </ng-template>
+  <!-- Logged In View -->
+  <ng-template #loggedInBlock>
+    <div class="row">
+      <div class="col">
+        <h4>Information</h4>
+        <p><b>First Name:</b> {{user.firstname}}</p>
+        <p><b>Last Name:</b> {{user.lastname}}</p>
+        <p><b>Email Address:</b> {{user.email}}</p>
+        <p><b>Username:</b> {{user.username}}</p>
+      </div>
+      <div class="col">
+        <h4>Change Password</h4>
+
+        <form [formGroup]="passwordGroup">
+          <div class="form-group">
+            <label>Current Password</label>
+            <input type="password" class="form-control" formControlName="currentP" placeholder="Current Password">
+          </div>
+          <div class="form-group">
+            <label>New Password</label>
+            <input type="password" class="form-control" formControlName="newP" placeholder="New Password">
+          </div>
+          <div class="form-group">
+            <label>Confirm New Password</label>
+            <input type="password" class="form-control" formControlName="newP2" placeholder="Confirm New Password">
+          </div>
+          <small id="emailHelp" class="form-text text-muted">Password can include lowercase and uppercase letters, numbers, 
+            and special characters (5-20 characters). </small>
+          <br>
+          <small id="errorInfo" class="form-text text-danger">{{errorMessage}}</small>
+          <small id="successInfo" class="form-text text-success">{{successMessage}}</small>
+          <br>
+          <button type="submit" class="btn btn-primary" (click)="submitPassword(passwordGroup)">Submit</button>
+        </form>
+      </div>
+    </div>
+  </ng-template>
+</div>

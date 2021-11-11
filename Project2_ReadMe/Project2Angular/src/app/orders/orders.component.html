@@ -1,0 +1,31 @@
+<div class="container">
+    <h2 id="title">Past Orders</h2>
+    <hr class="solid">
+    <div *ngIf="sessionUser!=null; then thenBlock else elseBlock"></div>
+    <ng-template #thenBlock>
+        <table class="table table-light table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">Cover</th>
+                    <th scope="col">Title</th>
+                    <th scope="col">Author</th>
+                    <th scope="col">Price</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let book of orderList">
+                    <td scope="col">
+                        <img width="50%" height="50%" id="cover" src="{{book.book_cover}}" alt="Book Cover"/>
+                    </td>
+                    <td scope="col">{{book.title}}</td>
+                    <td scope="col">{{book.author}}</td>
+                    <td scope="col">{{book.price | currency}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </ng-template>
+    <ng-template #elseBlock>
+        <p id="body">Register or login to an existing account.</p>
+    </ng-template>
+    <div>
+</div>

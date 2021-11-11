@@ -1,0 +1,37 @@
+<div class="container">
+    <h2 id="title">Registration</h2>
+    <hr class="solid">
+    <div *ngIf="!valid; then invalidBlock"></div>
+    <ng-template #invalidBlock>
+        <div class="alert alert-danger" role="alert">
+            <p id="title">Invalid input. Try again.</p>
+        </div>
+    </ng-template>
+    <br>
+    <form [formGroup]="registerGroup">
+        <div class="mb-3">
+            <label class="form-label"><b>First Name: </b></label> 
+            <label id="asterisk">* </label> 
+            <input type="text" class="form-control" formControlName="firstname" pattern="[A-Z]{1}[a-z]*" placeholder="Enter first name" required> 
+            <br>
+            <label class="form-label"><b>Last Name: </b></label>
+            <label id="asterisk">* </label> 
+            <input type="text"class="form-control" formControlName="lastname" pattern="[A-Z]{1}[a-z]*" placeholder="Enter last name" required> 
+            <br>
+            <label class="form-label"><b>Email: </b></label> 
+            <label id="asterisk">* </label> 
+            <input type="email" class="form-control" formControlName="email" placeholder="Enter email address" required> 
+            <br>
+            <label class="form-label"><b>Username: </b></label> 
+            <label id="asterisk">* </label> 
+            <input type="text" class="form-control" formControlName="username" pattern="[a-z][a-z0-9_.]{4,20}" placeholder="Enter username" required>
+            <p id="info-text"><small>Must be lowercase and can include numbers, underscores, and periods (5-20 characters)</small></p>
+            <label id="asterisk">* </label> 
+            <label id="required-text"><small>Required</small></label>
+            <br><br>
+            <div class="btn-container">
+                <button id="register-btn" type="submit" (click)="submitUser(registerGroup)">Register</button>
+            </div>
+        </div>
+    </form>
+</div>

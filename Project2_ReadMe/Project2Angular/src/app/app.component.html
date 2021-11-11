@@ -1,0 +1,72 @@
+<nav class="navbar navbar-expand-lg navbar-dark">
+  <div class="container-fluid">
+    <a title="About" class="navbar-brand" routerLink="/about">
+      <img src="./assets/simple_logo.png" width="115" height="84.42">
+      ReadMe.com
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button> 
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a title="Search" class="nav-link" aria-current="page" routerLink="">
+            <i class="bi bi-search"></i>
+            Search
+          </a>
+        </li>
+        <li class="nav-item" *ngIf="!readcustomerboolean()">
+          <a title="User Profile" class="nav-link" aria-current="page" routerLink="/profile">
+            <i class="bi bi-person-square"></i>
+            User Profile
+          </a>
+        </li>
+        <li class="nav-item" *ngIf="!readcustomerboolean()">
+          <a title="Past Orders" class="nav-link" aria-current="page" routerLink="/orders">
+            <i class="bi bi-box-seam"></i>
+            Past Orders
+          </a>
+        </li>
+        <li class="nav-item" *ngIf="!readcustomerboolean()">
+          <a title="Bookmarks" class="nav-link" aria-current="page" routerLink="/bookmarks">
+            <i class="bi bi-bookmark-fill"></i>
+            Bookmarks
+          </a>
+        </li>
+        <li class="nav-item" *ngIf="!readcustomerboolean()">
+          <a title="Shopping Cart" class="nav-link" aria-current="page" routerLink="/cart">
+            <i class="bi bi-cart-fill"></i>
+            Shopping Cart
+          </a>
+        </li>
+      </ul>
+      <div class="navbar-nav navbar-left">
+        <li class="nav-item" id="register"*ngIf="readcustomerboolean()">
+          <a title="Register" class="nav-link" aria-current="page" routerLink="/register">
+            <i class="bi bi-pencil-square"></i>
+            Register
+          </a>
+        </li>
+        <li class="nav-item" id="login"*ngIf="readcustomerboolean()">
+          <a title="Login" class="nav-link" routerLink="/login">
+            <i class="bi bi-box-arrow-in-right"></i>
+            Login
+          </a>
+        </li>
+        <li class="nav-item" id="logout"*ngIf="!readcustomerboolean()">
+          <a title="Logout" class="nav-link" (click)="logout()">
+            <i class="bi bi-box-arrow-right"></i>
+            Logout
+          </a>
+        </li>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<header>
+  <div class="container">
+    <a routerLink=""><img src="./assets/simple_logo.png"></a>
+  </div>
+</header>
+<router-outlet></router-outlet>

@@ -1,0 +1,16 @@
+#title {
+    text-align: center;
+}
+
+.catalog-container {
+    width: 1000px;
+    height: 100%;
+	margin: 0 auto 50px;
+	padding: 40px;
+	background: #EAE6E5;
+	border-radius: 30px;
+}
+
+#book {
+	text-align: center;
+}

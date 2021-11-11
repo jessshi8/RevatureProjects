@@ -1,0 +1,27 @@
+<div class="container">
+    <div class="row">
+        <div *ngIf="sessionUser!=null; then thenBlock else elseBlock"></div>
+        <ng-template #thenBlock>
+            <h2 id="greeting">Welcome {{user.firstname}}!</h2>
+        </ng-template>
+        <ng-template #elseBlock>
+            <h2 id="greeting">Welcome!</h2>
+        </ng-template>
+        <p id="title">Search for books by title, author, ISBN, publisher, or genre.</p>
+    </div>
+    <div class="row">
+        <form [formGroup]="filterForm" class="d-flex">
+            <select id="dropdown" formControlName="filter">
+                <option [ngValue]="null" disabled>Filter by</option>
+                <option *ngFor="let filter of filters" [ngValue]="filter.id">{{filter.name}}</option>
+            </select>
+            <input id="search-bar" class="form-control me-2" type="search" aria-label="Search" #searchInput
+                (keyup.enter)="searchBooks(searchInput.value)"
+                placeholder="Search...">
+            <button id="search-btn" type="submit" (click)="searchBooks(searchInput.value)">
+                <i class="bi bi-search"></i>
+            </button>
+        </form>
+    </div>
+
+</div>

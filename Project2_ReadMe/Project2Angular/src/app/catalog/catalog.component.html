@@ -1,0 +1,19 @@
+<div class="catalog-container">
+    <h2 id="title">Search Results</h2>
+    <hr class="solid">
+    <div *ngIf="bookList.length==0; then emptyBlock else notEmptyBlock"></div>
+    <ng-template #emptyBlock>
+        <p id="title">No results found.</p>
+    </ng-template>
+    <ng-template #notEmptyBlock>
+        <div class="container" *ngFor="let book of bookList">
+            <h5 id="book">
+                <a
+                [title]="book.title  + ' Details'" 
+                [routerLink]="['/book', book.isbn]">
+                "{{book.title}}" by {{book.author}}
+                </a>
+            </h5>
+        </div>
+    </ng-template>
+</div>

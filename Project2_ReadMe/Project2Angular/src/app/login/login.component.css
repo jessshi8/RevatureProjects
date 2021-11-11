@@ -1,0 +1,47 @@
+.login-container, .hidden-container {
+	width: 500px;
+	margin: 0 auto 50px;
+	padding: 40px;
+	background: #EAE6E5;
+	border-radius: 30px;
+}
+#title, #message {
+	text-align: center;
+}
+#asterisk, #message {
+	color: red;
+}
+#forgot-password {
+	text-decoration: underline;
+	color: #017fb4;
+}
+#forgot-password:hover {
+	cursor: pointer;
+}
+#hidden {
+	background-color: gainsboro;
+}
+.btn-container {
+	display: flex;  
+	justify-content: center;  
+	align-items: center;  
+}
+
+#login-btn, #reset-btn {
+    padding: 5px 10px;
+    background-color: white;
+    color: black;
+    border: 1px solid gray; 
+    transition-duration: 0.4s;
+    border-radius: 4px;
+}
+  
+#login-btn:hover {
+    background-color: #017fb4;
+    color: white;
+}
+
+#reset-btn:hover {
+	background-color: #e59c7c;
+    color: white;
+}

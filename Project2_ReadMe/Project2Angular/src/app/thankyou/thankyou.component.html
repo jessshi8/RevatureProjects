@@ -1,0 +1,16 @@
+<div class="container">
+  <h2 id="title">Order complete!</h2>
+  <hr class="solid">
+
+  <div *ngIf="sessionUser==null; then notLoggedInBlock else loggedInBlock"></div>
+  <!-- Not Logged In View -->
+  <ng-template #notLoggedInBlock>
+    <p id="body">Register or login to an existing account.</p>
+  </ng-template>
+  <ng-template #loggedInBlock>
+    <p id="body">Thank you for ordering!</p>
+    <div class="row" id="body">
+      <button (click)="toSearch()"><i class="bi bi-search"></i> To Search</button>
+      <button (click)="toOrders()"><i class="bi bi-box-seam"></i> To Orders</button>
+    </div>
+  </ng-template>

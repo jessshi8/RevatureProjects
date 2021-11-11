@@ -1,0 +1,71 @@
+<div *ngIf="forgot; then forgotBlock"></div>
+<ng-template #forgotBlock>
+    <div class="hidden-container">
+        <h3 id="title">Let's find your</h3>
+        <h3 id="title">ReadMe.com account</h3>
+        <div *ngIf="forgot && !found; then notFoundBlock"></div>
+        <ng-template #notFoundBlock>
+            <br>
+            <div class="alert alert-danger" role="alert">
+                <p id="title">Invalid username! Try again.</p>
+            </div>
+        </ng-template>
+        <div *ngIf="success; then successBlock"></div>
+        <ng-template #successBlock>
+            <br>
+            <div class="alert alert-success" role="alert">
+                <p id="title">Your password has been reset. Please check your email for your new password.</p>
+            </div>
+        </ng-template>
+        <br>
+        <p id="title">What's your username?</p>
+        <div id="form">
+            <form [formGroup]="emailGroup">
+                <input type="text" class="form-control" formControlName="username" placeholder="Enter your username" required> 
+                <br>
+                <div class="btn-container">
+                    <button id="reset-btn" type="submit" (click)="reset(emailGroup)">
+                        Send a password reset email
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</ng-template> 
+
+<div class="login-container">
+    <div class="row">
+        <h2 id="title">Login</h2>
+        <hr class="solid">
+        <br>
+        <div id="login-alert" *ngIf="submitted && !loggedIn; then invalidBlock"></div>
+        <ng-template #invalidBlock>
+            <div class="alert alert-danger" role="alert">
+                <p id="title">Invalid login. Try again.</p>
+            </div>
+        </ng-template>
+        <br>
+        <div id="form">
+            <form [formGroup]="loginGroup">
+                <label class="form-label" id="login-label"><b>Username: </b></label> 
+                <label id="asterisk">* </label>
+                <input id="login-username" type="text" class="form-control" formControlName="username" placeholder="Enter username" required> 
+                <br>
+                <label class="form-label"><b>Password: </b></label>
+                <label id="asterisk">* </label>
+                <input id="login-password" type="password" class="form-control" formControlName="password" placeholder="Enter password" required>
+                <br>
+                <label id="asterisk">* </label>
+                <label id="required-text"><small>Required</small></label>
+                <br><br>
+                <a id="forgot-password" (click)="forgotPassword()">Forgot Password</a>
+                <br><br>
+                <div class="btn-container">
+                    <button id="login-btn" type="submit" (click)="login(loginGroup)">
+                        Login
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,17 @@
+html {
+    height: 100%;
+}
+
+body {
+    background-image: url('./assets/books2.jpg');
+    background-position: center center;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-size: cover;
+}
+
+#footer {
+    text-align: center;
+    padding-bottom: 20px;
+    bottom: 0;
+}

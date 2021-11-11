@@ -1,0 +1,30 @@
+<div class="container">
+  <h2 id="title">Checkout</h2>
+  <hr class="solid">
+
+  <div *ngIf="sessionUser==null; then notLoggedInBlock else loggedInBlock"></div>
+  <!-- Not Logged In View -->
+  <ng-template #notLoggedInBlock>
+    <p id="body">Register or login to an existing account.</p>
+  </ng-template>
+  <ng-template #loggedInBlock>
+    <div id="billing">
+      <div *ngFor="let book of cartList">
+        <div class="row">
+          <p>{{book.title}}</p>
+          <p style="text-align: right;">{{book.price | currency}}</p>
+        </div>
+      </div>
+      <hr class="solid">
+      <div class="row">
+        <p><b>Total price: </b></p>
+        <p style="text-align: right;"><b>{{totalPrice | currency}}</b></p>
+      </div>
+      <hr class="solid">
+      <div class="row">
+        <button (click)="back()"><i class="bi bi-caret-left-fill"></i> Back</button>
+        <button (click)="addToOrders()"><i class="bi bi-cart4"></i> Purchase</button>
+      </div>
+    </div>
+  </ng-template>
+</div>

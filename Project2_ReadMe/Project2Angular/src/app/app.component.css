@@ -1,0 +1,11 @@
+header, .nav-item {
+    text-align: center;
+}
+
+nav {
+    background-color: #383331;
+}
+
+a:hover {
+    cursor: pointer;
+}

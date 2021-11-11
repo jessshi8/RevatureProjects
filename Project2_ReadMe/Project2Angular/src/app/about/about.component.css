@@ -1,0 +1,13 @@
+#title {
+    text-align: center;
+}
+
+.container {
+    width: 1000px;
+    height: 100%;
+	margin: 0 auto 50px;
+	padding: 40px;
+	background: #524c49;
+    color: white;
+	border-radius: 30px;
+}
